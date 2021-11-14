@@ -3,7 +3,7 @@
     chrome.webRequest.onBeforeSendHeaders.addListener(function (request) {
         if (request.requestHeaders) {
             let authoizationHeader = request.requestHeaders.find(function (header) {
-                return (header.name === 'Authorization') && header.value.startsWith('Bearer ');
+                return (header.name.toLowerCase() === 'authorization') && header.value.toLowerCase().startsWith('bearer ');
             });
             if (authoizationHeader) {
                 let requestInfo = [];
